@@ -31,10 +31,10 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    var Calculator:calculation= calculation()
+    var Calculator = calculation()
     var Displaycache:String = ""
     var cache  = 0.0
-    var cache 2:Double?
+    var cache2:Double?
     
      @IBOutlet weak var screen:UITextField!
     
@@ -66,13 +66,13 @@ class ViewController: UIViewController {
         click ("8")
     }
     @IBAction func number9(sender: AnyObject) {
-        click（"9")
+        click ("9")
     }
+
     @IBAction func point(sender: AnyObject) {
         click (".")
     }
-    
-    @IBAction func olgorithmjiasender: AnyObject) {
+    @IBAction func algorithmjia(sender: AnyObject) {
         Calculator .Setcurrentalgorithm(.addition)
         evalution()
     }
@@ -104,43 +104,42 @@ class ViewController: UIViewController {
    
     @IBAction func Reseynow (sender: AnyObject) {
         Displaycache = ""
-        self.screen.text = "当前输入已撤销👉 0.0"
+        self.screen.text = "当前输入已撤销"
         
     }
     @IBAction func Resetall (sender: AnyObject) {
        Displaycache  = ""
-        cache= 0.0
+        cache = 0.0
         cache2 = nil
-        Calculator.Setcurrentalgorithm(.未选择)
+        Calculator.Setcurrentalgorithm(.Nochoice )
         self.screen.text = ""
         
     }
-    @IBAction func result(sender: AnyObject) {
+    @IBAction func yunsuanresult(sender: AnyObject) {
         evalution()
     }
-    func 点按(数字:String) {
+    func click(number:String) {
         Displaycache += number
-        self.screen .text = Displaycache
+        self.screen.text = Displaycache
     }
-    func 求值() {
+    func evalution() {
         
         if !Displaycache.isEmpty {
             let temporary  = Displaycache as NSString
-            cache = temporary .doubleValue
+            cache = temporary.doubleValue
             Displaycache = ""
         }
         let temporary = cache
         var result = ""
         
-        if let 前一个数字 = cache2 {
-            result = calculation.求结果(前一个数字, 被操作数: temporary )
-            
+        if let Lastnumber = cache2 {
+            result = Calculator.Resultseeking(Lastnumber,Operandoperand: temporary )
             self.screen.text = result
             let temporary = result as NSString
-            cache2 = temporary .doubleValue
+            cache2 = temporary.doubleValue
         } else {
             cache2 = cache
-            cache= 0.0
+            cache = 0.0
         }
         
     }

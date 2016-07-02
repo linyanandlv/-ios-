@@ -1,7 +1,7 @@
 /*
 calculation 计算
 Currentalgorithm 当前算法
-olgorithm  算法
+algorithm  算法
 Nochoice 未选择
 Setcurrentalgorithm 设置当前算法
 temporary 临时
@@ -21,21 +21,21 @@ Resultseeking 求结果
 import Foundation
 
 struct calculation  {
-    private var Currentalgorithm:olgorithm = .Nochoice
+    private var Currentalgorithm:algorithm = .Nochoice
     
     
-    mutating func Setcurrentalgorithm(temporary:olgorithm) {
+    mutating func Setcurrentalgorithm(temporary:algorithm) {
         Currentalgorithm  = temporary
     }
     
-    func Readthecurrentalagorithm() -> olgorithm! {
+    func Readthecurrentalagorithm() -> algorithm! {
         return Currentalgorithm
     }
     
     
     
     
-    enum Nochoice {
+    enum algorithm {
         case addition
         case subtraction
         case multiplication
@@ -44,7 +44,7 @@ struct calculation  {
         case zhishumi
         case Nochoice
     }
-
+    
     
     func Resultseeking(Operationnumber :Double, Operandoperand:Double) ->String {
         var revert = ""
@@ -52,20 +52,20 @@ struct calculation  {
         case .addition:
             revert = "\(Operationnumber + Operandoperand)"
         case .subtraction:
-            revert = "\(Operationnumber- Operandoperand)"
+            revert = "\(Operationnumber - Operandoperand)"
         case .multiplication:
-            revert = "\(Operationnumber* Operandoperand)"
+            revert = "\(Operationnumber * Operandoperand)"
         case .division where Operandoperand != 0 :
-            revert = "\(Operationnumber/ Operandoperand)"
+            revert = "\(Operationnumber / Operandoperand)"
         case .pingfang:
             revert = "\(Operationnumber * Operandoperand)"
         case .zhishumi:
             var temporary = Operationnumber
-            let 整形被操作数 = Int(Operandoperand )
-            for _ in 1..<Operationnumber {
-               temporary *= Operationnumber
+            let zhengxingOperandoperand = Int(Operandoperand )
+            for _ in 1..<zhengxingOperandoperand {
+                temporary *= Operationnumber
             }
-             revert = "\(temporary)"
+            revert = "\(temporary)"
         case . Nochoice:
             revert = "未选择算法！"
         default:
